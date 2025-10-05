@@ -83,12 +83,15 @@
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <script>
-    (function() {
-        emailjs.init("Cq6reLC3xwJi7ngFg"); 
-    })();
+   (function(){
+    emailjs.init({
+        publicKey: "Cq6reLC3xwJi7ngFg"
+    });
+})();
+
 
     document.getElementById("consultForm").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -111,3 +114,4 @@
   </script>
 </body>
 </html>
+
