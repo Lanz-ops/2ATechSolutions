@@ -82,12 +82,12 @@
     <p>© 2025 2ATechSolutions. All rights reserved.</p>
   </footer>
   
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
   (function() {
     emailjs.init({
-      publicKey: "LVDtvMVgJo3IxJErC"
+      publicKey: "LVDtvMVgJo3IxJErC" // Make sure this matches your real public key
     });
   })();
 
@@ -95,28 +95,31 @@
     e.preventDefault();
 
     const params = {
-  title: "Consultation Request",
-  name: document.getElementById("name").value,
-  email: document.getElementById("email").value,
-  message: document.getElementById("message").value,
-  date: new Date().toLocaleString()
-};
+      title: "Consultation Request", // ✅ for {{title}} in Subject
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value,
+      date: new Date().toLocaleString()
+    };
 
+    console.log("Sending:", params); // Debug log
 
     emailjs.send("service_8jeiq0d", "template_x60c68p", params)
       .then(function(response) {
         console.log("SUCCESS!", response.status, response.text);
         alert("✅ Message sent successfully!");
         document.getElementById("consultForm").reset();
-      }, function(error) {
+      })
+      .catch(function(error) {
         console.error("EmailJS Error:", error);
-        alert("❌ Failed to send message. Please check your EmailJS settings.");
+        alert("❌ Failed to send message. Please check your EmailJS settings and IDs.");
       });
   });
 </script>
 
 </body>
 </html>
+
 
 
 
